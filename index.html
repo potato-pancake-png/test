@@ -6,61 +6,81 @@
 <title>정보처리기사 실기 기출문제 (2024~2025)</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;background:#f8f9fa;color:#212529}
-.app{max-width:900px;margin:0 auto;padding:1.5rem 1rem}
-.header{margin-bottom:1.25rem}
-.header h2{font-size:20px;font-weight:600;margin-bottom:4px}
-.header p{font-size:13px;color:#6c757d}
-.tabs-year{display:flex;gap:6px;margin-bottom:10px}
-.tab-y{padding:5px 14px;border-radius:8px;border:0.5px solid #ced4da;font-size:13px;cursor:pointer;background:#fff;color:#6c757d;transition:all .15s}
-.tab-y.active{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
-.tabs-round{display:flex;gap:6px;margin-bottom:1rem}
-.tab-r{padding:5px 14px;border-radius:8px;border:0.5px solid #ced4da;font-size:13px;cursor:pointer;background:#fff;color:#6c757d;transition:all .15s}
-.tab-r.active{background:#dcfce7;color:#15803d;border-color:#86efac}
-.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
-.toolbar input{flex:1;min-width:180px;padding:6px 10px;border:0.5px solid #ced4da;border-radius:8px;font-size:13px;background:#fff;color:#212529}
-.filter-btns{display:flex;gap:4px}
-.filter-btn{padding:5px 10px;border-radius:8px;border:0.5px solid #dee2e6;font-size:12px;cursor:pointer;background:#f8f9fa;color:#6c757d;transition:all .15s}
-.filter-btn.active{background:#fff3cd;color:#856404;border-color:#ffc107}
-.counter{margin-left:auto;font-size:12px;color:#6c757d}
-.q-list{display:flex;flex-direction:column;gap:10px}
-.q-card{background:#fff;border:0.5px solid #dee2e6;border-radius:12px;overflow:hidden;transition:border-color .15s}
-.q-card:hover{border-color:#adb5bd}
-.q-header{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;cursor:pointer;user-select:none}
-.q-num{min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;background:#f1f3f5;color:#6c757d}
-.q-meta{flex:1;min-width:0}
-.q-type-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:8px;margin-bottom:4px;font-weight:500}
-.badge-code{background:#dbeafe;color:#1d4ed8}
-.badge-sql{background:#fff3cd;color:#856404}
-.badge-concept{background:#dcfce7;color:#15803d}
-.badge-network{background:#fee2e2;color:#b91c1c}
-.badge-db{background:#e8eaf6;color:#3949ab}
-.q-text{font-size:14px;line-height:1.6;color:#212529}
-.q-toggle{font-size:18px;color:#adb5bd;line-height:1;flex-shrink:0;transition:transform .2s}
-.q-toggle.open{transform:rotate(90deg)}
-.code-area{display:none;border-top:0.5px solid #dee2e6}
+body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;background:linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);color:#212529;min-height:100vh}
+.app{max-width:900px;margin:0 auto;padding:2rem 1rem}
+.header{margin-bottom:1.5rem;text-align:center}
+.header h2{font-size:24px;font-weight:700;margin-bottom:8px;color:#1e293b;letter-spacing:-0.5px}
+.header p{font-size:14px;color:#64748b}
+.tabs-year{display:flex;gap:8px;margin-bottom:12px;justify-content:center}
+.tab-y{padding:8px 20px;border-radius:12px;border:2px solid transparent;font-size:14px;cursor:pointer;background:#fff;color:#64748b;transition:all .2s;font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.tab-y:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.tab-y.active{background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);color:#fff;border-color:#3b82f6;box-shadow:0 4px 12px rgba(59,130,246,0.3)}
+.tabs-round{display:flex;gap:8px;margin-bottom:1.25rem;justify-content:center;flex-wrap:wrap}
+.tab-r{padding:6px 16px;border-radius:10px;border:2px solid transparent;font-size:13px;cursor:pointer;background:#fff;color:#64748b;transition:all .2s;font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.tab-r:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.tab-r.active{background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;border-color:#10b981;box-shadow:0 4px 12px rgba(16,185,129,0.3)}
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap;background:#fff;padding:12px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.toolbar input{flex:1;min-width:200px;padding:8px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;background:#f8fafc;color:#212529;transition:all .2s}
+.toolbar input:focus{outline:none;border-color:#3b82f6;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+.filter-btns{display:flex;gap:6px;flex-wrap:wrap}
+.filter-btn{padding:6px 12px;border-radius:8px;border:2px solid transparent;font-size:12px;cursor:pointer;background:#f1f5f9;color:#64748b;transition:all .2s;font-weight:500}
+.filter-btn:hover{background:#e2e8f0;transform:translateY(-1px)}
+.filter-btn.active{background:#fef3c7;color:#92400e;border-color:#fbbf24}
+.counter{margin-left:auto;font-size:13px;color:#64748b;font-weight:600;background:#f1f5f9;padding:4px 12px;border-radius:8px}
+.q-list{display:flex;flex-direction:column;gap:16px}
+.q-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;overflow:hidden;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.q-card:hover{border-color:#cbd5e1;box-shadow:0 8px 24px rgba(0,0,0,0.12);transform:translateY(-2px)}
+.q-meta-row{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #f1f5f9}
+.q-num{min-width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#fff;box-shadow:0 4px 12px rgba(102,126,234,0.3)}
+.q-badges{flex:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-type-badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:4px 12px;border-radius:10px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,0.08)}
+.badge-code{background:linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);color:#1e40af;border:1px solid #93c5fd}
+.badge-sql{background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);color:#92400e;border:1px solid #fbbf24}
+.badge-concept{background:linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);color:#14532d;border:1px solid #86efac}
+.badge-network{background:linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);color:#7f1d1d;border:1px solid #fca5a5}
+.badge-db{background:linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);color:#3730a3;border:1px solid #a5b4fc}
+.q-year-info{font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 10px;border-radius:8px;font-weight:600;margin-left:auto}
+.q-content-box{margin:16px;padding:16px 18px;background:#f8fafc;border-left:4px solid #3b82f6;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.04);position:relative}
+.q-content-box::before{content:'❓';position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:20px;opacity:0.3}
+.q-content-box.has-code::before{content:'💻'}
+.q-text{font-size:15px;line-height:1.8;color:#1e293b;font-weight:500;padding-left:32px}
+.q-controls{display:flex;gap:8px;padding:0 16px 14px 16px}
+.control-btn{padding:8px 16px;border-radius:10px;border:2px solid transparent;font-size:13px;cursor:pointer;transition:all .2s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.code-toggle-btn{background:#f1f5f9;color:#475569;border-color:#e2e8f0}
+.code-toggle-btn:hover{background:#e2e8f0;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.code-toggle-btn.active{background:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);color:#fff;border-color:#8b5cf6}
+.answer-btn{background:linear-gradient(135deg, #10b981 0%, #059669 100%);color:#fff;border-color:#10b981;box-shadow:0 2px 8px rgba(16,185,129,0.3)}
+.answer-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,185,129,0.4)}
+.answer-btn.open{background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%);border-color:#ef4444;box-shadow:0 2px 8px rgba(239,68,68,0.3)}
+.code-area{display:none;border-top:2px solid #e2e8f0;background:#f8fafc}
 .code-area.open{display:block}
-.code-block{background:#1e1e2e;border-radius:0;padding:14px 16px;overflow-x:auto;position:relative}
-.code-block pre{font-family:'Consolas','Courier New',monospace;font-size:13px;line-height:1.7;color:#cdd6f4;white-space:pre;margin:0}
-.code-lang{position:absolute;top:8px;right:56px;font-size:11px;color:#585b70;font-family:monospace}
-.copy-btn{position:absolute;top:6px;right:12px;font-size:11px;padding:2px 8px;border-radius:4px;border:0.5px solid #585b70;background:transparent;color:#585b70;cursor:pointer;font-family:sans-serif}
-.copy-btn:hover{color:#cdd6f4;border-color:#cdd6f4}
-.answer-controls{border-top:0.5px solid #dee2e6;padding:10px 14px;display:flex;align-items:center;gap:8px}
-.answer-btn{padding:5px 12px;border-radius:6px;border:0.5px solid #86efac;font-size:12px;cursor:pointer;background:#dcfce7;color:#15803d;transition:all .15s;font-weight:500}
-.answer-btn:hover{background:#bbf7d0;border-color:#4ade80}
-.answer-btn.open{background:#f0fdf4;border-color:#22c55e}
-.answer-area{display:none;padding:0 14px 12px 14px}
-.answer-area.open{display:flex;align-items:flex-start;gap:10px}
-.ans-label{font-size:12px;font-weight:500;color:#15803d;white-space:nowrap;margin-top:1px}
-.ans-text{font-size:14px;color:#212529;line-height:1.6}
-.no-results{text-align:center;padding:3rem;color:#6c757d;font-size:14px}
-.kw{background:#fff3cd;color:#856404;border-radius:2px;padding:0 2px}
+.code-block{background:#1e1e2e;border-radius:0;padding:18px 20px;overflow-x:auto;position:relative}
+.code-block pre{font-family:'Consolas','Courier New',monospace;font-size:13.5px;line-height:1.8;color:#cdd6f4;white-space:pre;margin:0}
+.code-lang{position:absolute;top:10px;right:70px;font-size:11px;color:#6c7086;font-family:monospace;background:#313244;padding:2px 8px;border-radius:4px}
+.copy-btn{position:absolute;top:8px;right:14px;font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid #6c7086;background:#313244;color:#cdd6f4;cursor:pointer;font-family:sans-serif;font-weight:600;transition:all .2s}
+.copy-btn:hover{background:#45475a;border-color:#89b4fa;transform:translateY(-1px)}
+.answer-area{display:none;margin:0 16px 16px 16px;padding:16px;background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);border-radius:12px;border-left:4px solid #10b981;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.answer-area.open{display:flex;align-items:flex-start;gap:12px}
+.ans-label{font-size:13px;font-weight:700;color:#15803d;white-space:nowrap;margin-top:2px;background:#bbf7d0;padding:4px 10px;border-radius:6px}
+.ans-text{font-size:14px;color:#14532d;line-height:1.8;font-weight:500;flex:1}
+.no-results{text-align:center;padding:4rem 2rem;color:#64748b;font-size:15px;background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.kw{background:#fef3c7;color:#92400e;border-radius:3px;padding:1px 4px;font-weight:600}
 .syn-kw{color:#cba6f7}
 .syn-str{color:#a6e3a1}
 .syn-cmt{color:#6c7086;font-style:italic}
 .syn-num{color:#fab387}
 .syn-fn{color:#89b4fa}
 .syn-pp{color:#f9e2af}
+@media(max-width:640px){
+  .app{padding:1rem 0.75rem}
+  .header h2{font-size:20px}
+  .tabs-year,.tabs-round{gap:6px}
+  .tab-y,.tab-r{padding:6px 12px;font-size:12px}
+  .q-num{min-width:32px;height:32px;font-size:14px}
+  .q-content-box{margin:12px;padding:14px}
+  .q-text{font-size:14px;padding-left:28px}
+  .toolbar{padding:10px}
+}
 </style>
 </head>
 <body>
@@ -949,24 +969,27 @@ function render(){
         </div>
       </div>`:"";
     const qText=kw?hl(q.q.replace(/\n/g,"<br>"),kw):q.q.replace(/\n/g,"<br>");
-    const toggleIcon=q.code?"▸":"";
-    const onclickHandler=q.code?`onclick="toggleCode(${idx})"`:"";
+    const typeIcon={code:"💻",sql:"🗄️",concept:"📚",network:"🌐",db:"💾"}[q.type]||"📝";
+    const codeToggleBtn=q.code?`<button class="control-btn code-toggle-btn" id="code-btn-${idx}" onclick="toggleCode(${idx})">💻 코드보기</button>`:"";
     return `
     <div class="q-card" id="card-${idx}">
-      <div class="q-header" ${onclickHandler}>
+      <div class="q-meta-row">
         <div class="q-num">${origIdx}</div>
-        <div class="q-meta">
-          <span class="q-type-badge ${badgeClass(q.type)}">${badgeLabel(q.type)}</span>
-          <div class="q-text">${qText}</div>
+        <div class="q-badges">
+          <span class="q-type-badge ${badgeClass(q.type)}">${typeIcon} ${badgeLabel(q.type)}</span>
         </div>
-        <div class="q-toggle" id="tog-${idx}">${toggleIcon}</div>
+        <div class="q-year-info">${curYear}년 ${curRound}</div>
+      </div>
+      <div class="q-content-box ${q.code?'has-code':''}">
+        <div class="q-text">${qText}</div>
       </div>
       ${codeAreaHtml}
-      <div class="answer-controls">
-        <button class="answer-btn" id="ans-btn-${idx}" onclick="toggleAnswer(${idx})">정답보기</button>
+      <div class="q-controls">
+        ${codeToggleBtn}
+        <button class="control-btn answer-btn" id="ans-btn-${idx}" onclick="toggleAnswer(${idx})">✅ 정답보기</button>
       </div>
       <div class="answer-area" id="ans-${idx}">
-        <span class="ans-label">▶ 정답</span>
+        <span class="ans-label">정답</span>
         <span class="ans-text">${q.a.replace(/\n/g,"<br>")}</span>
       </div>
     </div>`;
@@ -974,17 +997,18 @@ function render(){
 }
 function toggleCode(idx){
   const codeArea=document.getElementById("code-"+idx);
-  const tog=document.getElementById("tog-"+idx);
-  if(!codeArea)return;
+  const codeBtn=document.getElementById("code-btn-"+idx);
+  if(!codeArea||!codeBtn)return;
   const open=codeArea.classList.toggle("open");
-  tog.classList.toggle("open",open);
+  codeBtn.classList.toggle("active",open);
+  codeBtn.innerHTML=open?"🔽 코드닫기":"💻 코드보기";
 }
 function toggleAnswer(idx){
   const ansArea=document.getElementById("ans-"+idx);
   const ansBtn=document.getElementById("ans-btn-"+idx);
   const open=ansArea.classList.toggle("open");
   ansBtn.classList.toggle("open",open);
-  ansBtn.textContent=open?"정답닫기":"정답보기";
+  ansBtn.innerHTML=open?"❌ 정답닫기":"✅ 정답보기";
 }
 function copyCode(btn){
   const pre=btn.nextElementSibling;
