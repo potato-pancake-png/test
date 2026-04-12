@@ -40,9 +40,18 @@ body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;background:linear-gr
 .badge-network{background:linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);color:#7f1d1d;border:1px solid #fca5a5}
 .badge-db{background:linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);color:#3730a3;border:1px solid #a5b4fc}
 .q-year-info{font-size:11px;color:#64748b;background:#f1f5f9;padding:4px 10px;border-radius:8px;font-weight:600;margin-left:auto}
-.q-content-box{margin:16px;padding:16px 18px;background:#f8fafc;border-left:4px solid #3b82f6;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.04);position:relative}
-.q-content-box::before{content:'❓';position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:20px;opacity:0.3}
-.q-content-box.has-code::before{content:'💻'}
+.q-content-box{margin:16px;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.q-question{padding:16px 20px;background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);border-left:4px solid #3b82f6;position:relative;margin-bottom:0}
+.q-question::before{content:'❓';position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:24px;opacity:0.35}
+.q-question.has-code::before{content:'💻'}
+.q-question-text{font-size:16px;line-height:1.75;color:#1e40af;font-weight:700;padding-left:40px}
+.q-description{padding:16px 20px 16px 22px;background:#f8fafc;border-left:4px solid #cbd5e1;margin-top:1px;position:relative}
+.q-description::before{content:'📋';position:absolute;left:22px;top:18px;font-size:18px;opacity:0.4}
+.q-description-text{font-size:14px;line-height:2;color:#475569;font-weight:400;padding-left:30px;white-space:pre-wrap}
+.q-description-text ul{margin:8px 0 8px 4px;padding-left:24px;list-style-position:outside}
+.q-description-text li{margin:6px 0;list-style-type:disc;color:#64748b;line-height:1.8}
+.q-description-text strong{display:inline-block;margin:8px 0 4px 0;font-size:13px}
+.q-description-text br+br{display:none}
 .q-text{font-size:15px;line-height:1.8;color:#1e293b;font-weight:500;padding-left:32px}
 .q-controls{display:flex;gap:8px;padding:0 16px 14px 16px}
 .control-btn{padding:8px 16px;border-radius:10px;border:2px solid transparent;font-size:13px;cursor:pointer;transition:all .2s;font-weight:600;display:inline-flex;align-items:center;gap:6px}
@@ -77,7 +86,12 @@ body{font-family:'Malgun Gothic','맑은 고딕',sans-serif;background:linear-gr
   .tabs-year,.tabs-round{gap:6px}
   .tab-y,.tab-r{padding:6px 12px;font-size:12px}
   .q-num{min-width:32px;height:32px;font-size:14px}
-  .q-content-box{margin:12px;padding:14px}
+  .q-content-box{margin:12px}
+  .q-question{padding:12px 14px}
+  .q-question-text{font-size:14px;padding-left:30px}
+  .q-question::before{font-size:18px;left:14px}
+  .q-description{padding:12px 14px 12px 16px}
+  .q-description-text{font-size:13px;padding-left:22px}
   .q-text{font-size:14px;padding-left:28px}
   .toolbar{padding:10px}
 }
@@ -947,6 +961,73 @@ function hl(text,kw){
   const re=new RegExp(`(${kw.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")})`,"gi");
   return text.replace(re,`<span class="kw">$1</span>`);
 }
+function parseQuestion(qText){
+  const patterns=[
+    /^(.*?(?:작성하시오|쓰시오|구하시오|나열하시오|설명하시오|답하시오|고르시오|찾으시오|서술하시오|출력하시오|계산하시오|표시하시오)\.?)\s*\n([\s\S]+)/,
+    /^(.*?(?:\?|？|：))\s*\n([\s\S]+)/,
+    /^([^\n]{10,120})\n((?:\[보기|보기:|설명:|조건:|\-|•|①|②|③|④|⑤|1\)|2\)|ㄱ\.|ㄴ\.)[\s\S]+)/,
+    /^(다음.*?(?:문제|내용|코드|표|그림).*?)\n([\s\S]+)/,
+  ];
+  for(let pattern of patterns){
+    const match=qText.match(pattern);
+    if(match&&match[2].trim().length>0){
+      return{question:match[1].trim(),description:match[2].trim()};
+    }
+  }
+  const lines=qText.split('\n');
+  if(lines.length>=2){
+    const firstLine=lines[0].trim();
+    const rest=lines.slice(1).join('\n').trim();
+    if(rest.length>15&&(rest.includes('-')||rest.includes('•')||rest.includes('①')||rest.includes('1)')||rest.includes('[')||rest.includes('(')||rest.includes(':')||/^[ㄱ-ㅎ]\./.test(rest))){
+      return{question:firstLine,description:rest};
+    }
+  }
+  return{question:qText,description:null};
+}
+function formatDescription(desc){
+  if(!desc)return'';
+  let processedDesc=desc;
+  if(desc.includes('[보기')||desc.includes('보기:')){
+    processedDesc=desc.replace(/\[보기[^\]]*\][:：]?/gi,'<strong style="color:#3b82f6;font-weight:600;">📋 보기</strong><br>');
+    processedDesc=processedDesc.replace(/보기[:：]/gi,'<strong style="color:#3b82f6;font-weight:600;">📋 보기</strong><br>');
+  }
+  if(desc.includes('설명:')){
+    processedDesc=processedDesc.replace(/설명[:：]/gi,'<strong style="color:#3b82f6;font-weight:600;">📝 설명</strong><br>');
+  }
+  if(desc.includes('조건:')){
+    processedDesc=processedDesc.replace(/조건[:：]/gi,'<strong style="color:#3b82f6;font-weight:600;">⚙️ 조건</strong><br>');
+  }
+  const lines=processedDesc.split('\n').filter(l=>l.trim());
+  const listPattern=/^[\-•]\s+|^[①②③④⑤⑥⑦⑧⑨⑩]\s*|^\([1-9]\)\s*|^[1-9]\)\s*|^[ㄱ-ㅎ]\.\s+/;
+  const isList=lines.some(l=>listPattern.test(l.trim()));
+  if(isList){
+    const items=lines.map(l=>{
+      const trimmed=l.trim();
+      if(listPattern.test(trimmed)){
+        const cleaned=trimmed.replace(listPattern,'');
+        return`<li>${cleaned}</li>`;
+      }else if(trimmed.includes('<strong')){
+        return trimmed;
+      }else{
+        return trimmed+'<br>';
+      }
+    });
+    let result='';
+    let inList=false;
+    items.forEach(item=>{
+      if(item.startsWith('<li>')){
+        if(!inList){result+='<ul>';inList=true;}
+        result+=item;
+      }else{
+        if(inList){result+='</ul>';inList=false;}
+        result+=item;
+      }
+    });
+    if(inList)result+='</ul>';
+    return result;
+  }
+  return processedDesc.replace(/\n/g,'<br>');
+}
 function render(){
   const kw=document.getElementById("searchInput").value.trim().toLowerCase();
   const questions=DATA[curYear][curRound];
@@ -968,7 +1049,12 @@ function render(){
           <pre>${highlight(q.code,q.lang||"")}</pre>
         </div>
       </div>`:"";
-    const qText=kw?hl(q.q.replace(/\n/g,"<br>"),kw):q.q.replace(/\n/g,"<br>");
+    const parsed=parseQuestion(q.q);
+    const questionText=kw?hl(parsed.question,kw):parsed.question;
+    const descriptionHtml=parsed.description?`
+      <div class="q-description">
+        <div class="q-description-text">${kw?hl(formatDescription(parsed.description),kw):formatDescription(parsed.description)}</div>
+      </div>`:'';
     const typeIcon={code:"💻",sql:"🗄️",concept:"📚",network:"🌐",db:"💾"}[q.type]||"📝";
     const codeToggleBtn=q.code?`<button class="control-btn code-toggle-btn" id="code-btn-${idx}" onclick="toggleCode(${idx})">💻 코드보기</button>`:"";
     return `
@@ -980,8 +1066,11 @@ function render(){
         </div>
         <div class="q-year-info">${curYear}년 ${curRound}</div>
       </div>
-      <div class="q-content-box ${q.code?'has-code':''}">
-        <div class="q-text">${qText}</div>
+      <div class="q-content-box">
+        <div class="q-question ${q.code?'has-code':''}">
+          <div class="q-question-text">${questionText}</div>
+        </div>
+        ${descriptionHtml}
       </div>
       ${codeAreaHtml}
       <div class="q-controls">
