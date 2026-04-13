@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }`,lang:"c",a:"GECA"},
       {type:"network",q:"아래 네트워크에서 라우터를 통한 할당 가능한 2번, 4번, 5번의 IP를 작성하시오.\n-1) 192.168.35.3/24\n-3) 129.200.10.16/22\n-6) 192.168.36.24/24",a:"2) 192.168.35.72 / 4) 129.200.8.249 / 5) 192.168.36.249"},
-      {type:"db",q:"아래 표에서 나타나고 있는 정규형을 작성하시오.\n(고객아이디 | 강좌명 | 강사번호)\n- 부분 함수 종속 없음\n- 이행 함수 종속 없음",a:"제3정규형 (3NF)"},
+      {type:"db",q:"아래 표에서 나타나고 있는 정규형을 작성하시오.\n[수강]\n고객아이디(PK) | 강좌명(PK) | 강사번호\nC001 | 수학 | T01\nC001 | 영어 | T02\nC002 | 수학 | T01",a:"제3정규형 (3NF)"},
       {type:"network",q:"아래 내용에서 설명하는 네트워크 용어를 영문 약자로 작성하시오.\n- 링크 상태 라우팅 프로토콜\n- 단일 자율 시스템 내 내부 게이트웨이 프로토콜\n- Dijkstra 알고리즘으로 최단 경로 계산",a:"OSPF"},
       {type:"db",q:"아래 각 설명에 대한 조인 종류를 작성하시오.\n(1) 조건 만족 튜플만 반환\n(2) '='(등호)로 일치하는 결과 반환\n(3) (2)에서 중복 속성 제거",a:"(1) 세타 조인  (2) 동등 조인  (3) 자연 조인"},
       {type:"concept",q:"페이지 참조 순서: 1 2 3 1 2 4 1 2 5 7. \n- 할당된 프레임 수가 3개일 때 LRU와 LFU 알고리즘의 페이지 부재 횟수를 각각 작성하시오.",a:"(1) LRU: 6회  (2) LFU: 6회"},
@@ -408,7 +408,7 @@ int main() {
     "1회": [
       {type:"concept",q:"아래 네트워크 보안 관련 설명에서 해킹 기법을 작성하시오.\n- '세션을 가로채다'라는 의미\n- TCP의 3-way 핸드셰이크 완료 후 시퀀스 번호 조작\n- 정상 세션 탈취, 인증 없이 통신",a:"세션 하이재킹 (Session Hijacking)"},
       {type:"db",q:"다음 제약조건 관련 문제에서 보기(개체, 참조, 도메인)를 ㄱ, ㄴ, ㄷ에 알맞게 작성하시오.\nㄱ. 특정 속성에 입력될 수 있는 값의 유형/범위\nㄴ. 릴레이션의 모든 튜플은 기본키를 가져야 함\nㄷ. 외래키는 참조 릴레이션의 기본키 또는 NULL이어야 함",a:"ㄱ. 도메인  ㄴ. 개체  ㄷ. 참조"},
-      {type:"concept",q:"아래 내용에서 설명하는 3글자 영문 약자를 작성하시오.\n- 데이터 전송/저장 시 오류 감지에 사용되는 오류 검출 코드\n- 정해진 다항식(예: x³+x+1) 기반 2진수 나눗셈, 나머지를 검출 코드로 사용",a:"CRC"},
+      {type:"concept",q:"아래의 내용에서 설명 글의 괄호안의 용어를 영문 약자로 작성하시오.\n\n( ) 은/는 3글자의 영어 약자로 이루어진 오류 기법으로 데이터를 전송하거나 저장할 때 데이터의 오류를 감지하는 데 사용되는 오류 검출 코드이다.\n\n( ) 은/는 데이터에 체크섬을 추가하여 데이터를 전송하거나 저장한 후, 수신 또는 읽을 때 이 체크섬을 다시 계산하여 데이터가 변경되었는지 확인하는 기법이다.\n\n( ) 은/는 데이터 전송의 안정성을 높이는 데 중요한 역할을 한다.\n\n데이터는 이진수(0과 1)로 표현되며 정해진 다항식(x³ + x + 1)을 기반으로 데이터를 2진수 나눗셈하고 나머지를 ( ) 값으로 삼는다.",a:"CRC"},
       {type:"concept",q:"악성코드 보기에서 '공포를 이용해 피해자를 속여 소프트웨어를 구매하게 만드는 랜섬웨어'를 골라 작성하시오.\n[보기: ㄱ.컴포넌트웨어  ㄴ.유즈웨어  ㄷ.셔블웨어  ㄹ.스캐어웨어  ㅁ.안티스파이웨어  ㅂ.네트웨어  ㅅ.그룹웨어  ㅇ.애드웨어]",a:"ㄹ. 스캐어웨어(Scareware)"},
       {type:"code",q:"다음 Java 코드의 출력 값을 작성하시오.",code:`public class Main {
     public static void main(String[] args) {
@@ -564,7 +564,7 @@ int main(){
     ],
     "2회": [
       {type:"db",q:"데이터베이스 물리 설계 시 키 값과 포인터를 쌍으로 저장하여 빠르게 탐색하는 접근 방법을 작성하시오.",a:"인덱스(색인) 접근"},
-      {type:"db",q:"릴레이션에서 열(Column)을 의미하며 파일 구조의 필드(Field)에 해당하는 구성 요소를 보기에서 골라 작성하시오.\n- [보기: ㄱ.Cardinality  ㄴ.Domain  ㄷ.Attribute  ㅁ.Degree  ㅂ.Schema  ㅅ.Tuple]",a:"ㄷ. Attribute"},
+      {type:"db",q:"릴레이션에서 열(Column)을 의미하며 파일 구조의 필드(Field)에 해당하는 구성 요소를 보기에서 골라 작성하시오.\n[보기]\n- ㄱ. Cardinality\n- ㄴ. Domain\n- ㄷ. Attribute\n- ㅁ. Degree\n- ㅂ. Schema\n- ㅅ. Tuple",a:"ㄷ. Attribute"},
       {type:"network",q:"아래 내용을 보고 알맞는 보안 프로토콜을 작성하시오.\n- 암호화된 통신을 제공하는 원격 접속용 보안 프로토콜\n- 공개키 기반 인증, 기본 포트 22번\n- Telnet의 보안 취약점을 보완한 대안",a:"SSH"},
       {type:"concept",q:"스케줄링 알고리즘 (1)과 (2)를 작성하시오.\n- (1) CPU burst 시간이 짧은 프로세스를 우선 처리하는 비선점형 방식\n- (2) (1)을 선점형으로 구현한 형태",a:"(1) SJF  (2) SRT"},
       {type:"code",q:"다음 Java 코드의 출력 값을 작성하시오.",code:`public class Main {
@@ -608,13 +608,30 @@ int main(){
       {type:"concept",q:"다음 제어 흐름 그래프에서 분기 커버리지를 만족하기 위한 테스팅 경로를 작성하시오. (노드: 1-2-3-4-5-6-7)",a:"1234561 과 124567 (또는 1234567 과 124561)"},
       {type:"code",q:"다음 C언어 원형 큐 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 #define SIZE 3
-typedef struct{int a[SIZE];int front,rear;}Queue;
-void enq(Queue*q,int val){q->a[q->rear]=val;q->rear=(q->rear+1)%SIZE;}
-int deq(Queue*q){int val=q->a[q->front];q->front=(q->front+1)%SIZE;return val;}
-int main(){
-    Queue q={{0},0,0};
-    enq(&q,1);enq(&q,2);deq(&q);enq(&q,3);
-    printf("%d 그리고 %d",deq(&q),deq(&q));
+
+typedef struct {
+    int a[SIZE];
+    int front, rear;
+} Queue;
+
+void enq(Queue* q, int val) {
+    q->a[q->rear] = val;
+    q->rear = (q->rear + 1) % SIZE;
+}
+
+int deq(Queue* q) {
+    int val = q->a[q->front];
+    q->front = (q->front + 1) % SIZE;
+    return val;
+}
+
+int main() {
+    Queue q = {{0}, 0, 0};
+    enq(&q, 1);
+    enq(&q, 2);
+    deq(&q);
+    enq(&q, 3);
+    printf("%d 그리고 %d", deq(&q), deq(&q));
     return 0;
 }`,lang:"c",a:"2 그리고 3"},
       {type:"concept",q:"라운드로빈(RR) 스케줄링, 타임퀀텀 4ms일 때 평균 대기시간을 구하시오.\n- P1: 도착0/실행8\n- P2: 도착1/실행4\n- P3: 도착2/실행9\n- P4: 도착3/실행5",a:"11.75ms"},
@@ -636,6 +653,22 @@ int main(){
         System.out.println(a.v+"a"+b.v+"b"+c.v);
     }
 }`,lang:"java",a:"1a3b3"},
+      {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
+#include <stdlib.h>
+struct node { int p; struct node* n; };
+int main() {
+    struct node a={1,NULL}, b={2,NULL}, c={3,NULL};
+    a.n=&b; b.n=&c; c.n=NULL;
+    c.n=&a; a.n=&b; b.n=NULL;
+    struct node* head=&c;
+    printf("%d %d %d", head->p, head->n->p, head->n->n->p);
+    return 0;
+}`,lang:"c",a:"3 1 2"},
+      {type:"code",q:"다음 Python 코드의 출력 값을 작성하시오.",code:`lst=[1,2,3]
+dst={i:i*2 for i in lst}
+s=set(dst.values())
+lst[0]=99; dst[2]=7; s.add(99)
+print(len(s & set(dst.values())))`,lang:"python",a:"2"},
       {type:"code",q:"다음 C언어 연결 리스트(역방향) 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 #include <stdlib.h>
 struct node{char c;struct node*p;};
@@ -649,13 +682,8 @@ int main(){
     while(n){putchar(n->c);struct node*t=n;n=n->p;free(t);}
     return 0;
 }`,lang:"c",a:"TSEB"},
-      {type:"network",q:"다음 TCP 공격 기법 설명을 읽고 알맞는 공격 이름을 작성하시오.\n- 클라이언트가 SYN 패킷만 대량 전송, 마지막 ACK는 보내지 않음\n- 서버의 연결 대기 큐가 가득 차 정상 접속 불가",a:"SYN Flooding"},
-      {type:"code",q:"다음 Python 코드의 출력 값을 작성하시오.",code:`lst=[1,2,3]
-dst={i:i*2 for i in lst}
-s=set(dst.values())
-lst[0]=99; dst[2]=7; s.add(99)
-print(len(s & set(dst.values())))`,lang:"python",a:"2"},
-      {type:"db",q:"아래 employee 테이블에서 πTTL(employee) 관계대수 연산 결과를 작성하시오.\n- TTL: 부장, 대리, 과장, 차장",a:"TTL: 부장, 대리, 과장, 차장"},
+      {type:"network",q:"다음 TCP 공격 기법 설명을 읽고 보기에서 알맞는 공격 이름을 작성하시오.\n- TCP의 3-way Handshaking 취약점을 악용한 서비스 거부(DoS) 공격\n- 공격자가 SYN 패킷을 대량 전송하고 마지막 ACK는 보내지 않음\n- 서버의 연결 대기 큐가 가득 차 정상 접속 불가\n[보기: Smurf / TearDrop / Ping of Death / SYN Flooding / Land Attack / DDoS]",a:"SYN Flooding"},
+      {type:"db",q:"아래 EMPLOYEE 테이블에서 πTTL(EMPLOYEE) 관계대수 연산 결과를 테이블 형태로 작성하시오.\n[EMPLOYEE]\nINDEX | AGE | TTL\n    1 |  55 | 부장\n    2 |  35 | 대리\n    3 |  42 | 과장\n    4 |  45 | 차장",a:"TTL\n─\n부장\n대리\n과장\n차장"},
     ],
     "3회": [
       {type:"concept",q:"시스템을 폴더 모양 단위로 구분하여 구성 요소 간 관계를 표현하는 UML 구조 다이어그램의 명칭을 작성하시오.\n- («import», «access», «merge» 관계 표현 가능)",a:"패키지(Package) 다이어그램"},
@@ -731,7 +759,7 @@ public class Main{
     }
 }`,lang:"java",a:"super"},
       {type:"concept",q:"다음 설명에 해당하는 인증 및 자원 접근 방식을 작성하시오.\n- 비밀번호 없이 Access Token으로 API 접근 권한 위임\n- '인가(Authorization)' 절차를 통해 제3자에게 접근 권한 부여\n- 대표적 예: 소셜 로그인",a:"OAuth"},
-      {type:"db",q:"아래 두 릴레이션 R, S에서 R÷S(나누기 연산)의 결과를 테이블 형태로 작성하시오.",a:"A\n─\na1"},
+      {type:"db",q:"아래 두 릴레이션 R, S에서 R÷S(나누기 연산)의 결과를 테이블 형태로 작성하시오.\n[R]\nA  | B\na1 | b1\na1 | b2\na2 | b1\na3 | b2\n[S]\nB\nb1\nb2",a:"A\n─\na1"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 int main(){
     int x=7,y=4,z;
@@ -756,6 +784,16 @@ public class Main{
 }`,lang:"java",a:"AB"},
       {type:"concept",q:"접근통제 모델 3가지를 설명에 맞게 작성하시오.\n- ㄱ. 중앙에서 보안 정책을 일괄 설정, 보안 등급으로 접근 결정\n- ㄴ. 조직 내 직무·역할에 따라 접근 권한 부여\n- ㄷ. 자원의 소유자가 접근 권한을 자유롭게 부여/회수",a:"ㄱ. MAC  ㄴ. RBAC  ㄷ. DAC"},
       {type:"concept",q:"테스트케이스 구성요소 빈칸을 보기에서 골라 작성하시오.\n- (테스트 대상 / 입력 값 / 기대 출력 결과 순서)\n- [보기: ㄱ.테스트조건  ㄹ.테스트데이터  ㅁ.예상결과]",a:"ㄱ 테스트 조건, ㄹ 테스트 데이터, ㅁ 예상 결과"},
+      {type:"code",q:"다음 Python 코드의 출력 값을 작성하시오.",code:`data=[
+    [3,5,2,4,1],
+    [4,5,1],
+    [4,4,1,5,4],
+    [4,5]
+]
+result={}
+for index,lis in enumerate(data):
+    result[index]=(sum(lis),len(lis))
+print(result)`,lang:"python",a:"{0: (15, 5), 1: (10, 3), 2: (18, 5), 3: (9, 2)}"},
     ],
   },
 };
@@ -766,5 +804,6 @@ export interface Question {
   q: string;
   code?: string;
   lang?: string;
+  img?: string;
   a: string;
 }

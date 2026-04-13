@@ -180,6 +180,12 @@ const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: numbe
 
       {description && <DescriptionBox description={description} highlightText={highlightText} />}
 
+      {q.img && (
+        <div className="q-img-wrap">
+          <img src={q.img} alt="diagram" style={{maxWidth:'100%',borderRadius:'6px',marginTop:'0.75rem'}} />
+        </div>
+      )}
+
       {showCode && q.code && (
         <div className="code-area">
           <div className="code-header">
