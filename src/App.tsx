@@ -32,8 +32,17 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const DescriptionBox = ({ description, highlightText }: { description: string, highlightText: (t: string) => React.ReactNode }) => {
-  const lines = description.split('\n').filter(l => l.trim());
-  const listPattern = /^[\-•*]\s+|^[①②③④⑤⑥⑦⑧⑨⑩]\s*|^\([1-9]\)\s*|^[1-9][\.\)]\s*|^[ㄱ-ㅎ]\.\s+/;
+  // 지능적으로 리스트 마커를 찾아 줄바꿈을 처리하는 함수
+  const smartSplit = (text: string) => {
+    // 1) 마커 패턴: - , •, ①~⑩, (1), 1., 1), ㄱ. 등
+    // 문장 중간에 있는 마커들 앞에 \n을 삽입하여 강제 분리
+    const markerPattern = /([^\n])\s+(?=[\-•*]\s|[①②③④⑤⑥⑦⑧⑨⑩]|(?:\d+[\.\)])|[ㄱ-ㅎ]\.)/g;
+    const normalized = text.replace(markerPattern, '$1\n');
+    return normalized.split('\n').filter(l => l.trim());
+  };
+
+  const lines = smartSplit(description);
+  const listPattern = /^[\-•*]\s*|^[①②③④⑤⑥⑦⑧⑨⑩]\s*|^\([1-9]\)\s*|^\d+[\.\)]\s*|^[ㄱ-ㅎ]\.\s+/;
 
   return (
     <div className="q-desc-container">

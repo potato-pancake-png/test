@@ -38,7 +38,7 @@ int main() {
     }
     printf("%d", v2 + v3);
 }`,lang:"c",a:"151"},
-      {type:"concept",q:"다음은 응집도와 관련된 문제입니다. 보기에서 응집도가 높은 순으로 나열하시오.\n-ㄱ. 기능 -ㄴ. 교환  -ㄷ. 우연  -ㄹ. 시간",a:"ㄱ → ㄴ → ㄹ → ㄷ"},
+      {type:"concept",q:"다음은 응집도와 관련된 문제입니다. 보기에서 응집도가 높은 순으로 나열하시오.\n-ㄱ. 기능\n-ㄴ. 교환\n-ㄷ. 우연\n-ㄹ. 시간",a:"ㄱ → ㄴ → ㄹ → ㄷ"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 #include <string.h>
 
@@ -62,8 +62,8 @@ int main(int argc, char* argv[]) {
     printf("\n");
     return 0;
 }`,lang:"c",a:"GECA"},
-      {type:"network",q:"아래 네트워크에서 라우터를 통한 할당 가능한 2번, 4번, 5번의 IP를 작성하시오.\n-1) 192.168.35.3/24  3) 129.200.10.16/22  6) 192.168.36.24/24",a:"2) 192.168.35.72 / 4) 129.200.8.249 / 5) 192.168.36.249"},
-      {type:"db",q:"아래 표에서 나타나고 있는 정규형을 작성하시오.\n(고객아이디 | 강좌명 | 강사번호 — 부분 함수 종속 없음, 이행 함수 종속 없음)",a:"제3정규형 (3NF)"},
+      {type:"network",q:"아래 네트워크에서 라우터를 통한 할당 가능한 2번, 4번, 5번의 IP를 작성하시오.\n-1) 192.168.35.3/24\n-3) 129.200.10.16/22\n-6) 192.168.36.24/24",a:"2) 192.168.35.72 / 4) 129.200.8.249 / 5) 192.168.36.249"},
+      {type:"db",q:"아래 표에서 나타나고 있는 정규형을 작성하시오.\n(고객아이디 | 강좌명 | 강사번호)\n- 부분 함수 종속 없음\n- 이행 함수 종속 없음",a:"제3정규형 (3NF)"},
       {type:"network",q:"아래 내용에서 설명하는 네트워크 용어를 영문 약자로 작성하시오.\n- 링크 상태 라우팅 프로토콜\n- 단일 자율 시스템 내 내부 게이트웨이 프로토콜\n- Dijkstra 알고리즘으로 최단 경로 계산",a:"OSPF"},
       {type:"db",q:"아래 각 설명에 대한 조인 종류를 작성하시오.\n(1) 조건 만족 튜플만 반환\n(2) '='(등호)로 일치하는 결과 반환\n(3) (2)에서 중복 속성 제거",a:"(1) 세타 조인  (2) 동등 조인  (3) 자연 조인"},
       {type:"concept",q:"페이지 참조 순서: 1 2 3 1 2 4 1 2 5 7. \n- 할당된 프레임 수가 3개일 때 LRU와 LFU 알고리즘의 페이지 부재 횟수를 각각 작성하시오.",a:"(1) LRU: 6회  (2) LFU: 6회"},
@@ -181,18 +181,8 @@ int main() {
     }
 }`,lang:"java",a:"NNN"},
       {type:"db",q:"다음에서 설명하는 용어를 작성하시오.\n- 데이터를 중복시켜 성능을 향상시키는 기법\n- 테이블 합치기, 중복 저장 등으로 성능 향상\n- 데이터 무결성 저하 가능",a:"반정규화"},
-      {type:"sql",q:"아래 SQL 구문의 빈칸 ①~④를 작성하시오.",code:`INSERT INTO 사원 (사원번호, 이름, 주소, 부서)
-[ ① ] (32431, '정실기', '서울', '영업');
-
-INSERT INTO 부서 (사원번호, 이름, 나이, 부서)
-[ ② ] 사원번호, 이름, 나이, 23
-FROM 사원 WHERE 이름 = '정실기';
-
-SELECT * [ ③ ] 사원;
-
-UPDATE 사원 [ ④ ] 부서 = '퇴사'
-WHERE 사원번호 = 32431;`,lang:"sql",a:"① VALUES  ② SELECT  ③ FROM  ④ SET"},
-      {type:"db",q:"다음 릴레이션의 Cardinality와 Degree를 작성하시오.\n(5개 행, 4개 속성으로 구성된 릴레이션)",a:"Cardinality: 5  /  Degree: 4"},
+      {type:"sql",q:"아래 SQL 구문의 빈칸 ①~④를 작성하시오.\n① INSERT INTO 사원 (사원번호, 이름, 주소, 부서) [ ① ] (32431, '정실기', '서울', '영업');\n② INSERT INTO 부서 (사원번호, 이름, 나이, 부서) [ ② ] 사원번호, 이름, 나이, 23 FROM 사원 WHERE 이름 = '정실기';\n③ SELECT * [ ③ ] 사원;\n④ UPDATE 사원 [ ④ ] 부서 = '퇴사' WHERE 사원번호 = 32431;",lang:"sql",a:"① VALUES  ② SELECT  ③ FROM  ④ SET"},
+      {type:"db",q:"다음 릴레이션의 Cardinality와 Degree를 작성하시오.\n- 5개 행으로 구성\n- 4개 속성으로 구성",a:"Cardinality: 5  /  Degree: 4"},
       {type:"network",q:"아래 프로토콜에 대한 내용을 읽고 알맞는 답을 작성하시오.\n- Network layer에서 IP패킷을 암호화하고 인증\n- VPN 구현에 사용\n- AH(Authentication Header)와 ESP(Encapsulating Security Payload) 사용",a:"IPSec"},
       {type:"code",q:"다음 Python 코드의 출력 값을 작성하시오.",code:`def fnCalculation(x, y):
     result = 0
@@ -210,7 +200,7 @@ print(out)`,lang:"python",a:"ab3ca3"},
       {type:"concept",q:"실행 순서가 밀접한 기능을 모아 구성하며, 한 기능의 출력이 다음 기능의 입력으로 제공되는 응집도를 보기에서 골라 작성하시오.",a:"ㅂ. 순차적(sequential) 응집도"},
       {type:"concept",q:"컬렉션 객체의 내부 구조를 노출하지 않고 순차적으로 접근할 수 있게 하는 디자인 패턴을 작성하시오.",a:"Iterator 패턴"},
       {type:"network",q:"아래 그림을 바탕으로 RIP 최단 경로 비용을 계산하여 A에서 출발하는 경로를 작성하시오.",a:"A → D → C → F"},
-      {type:"concept",q:"SRT 스케줄링의 평균 대기시간을 계산하시오.\nA: 도착0/서비스8  B: 도착1/서비스4  C: 도착2/서비스9  D: 도착3/서비스5",a:"6.5ms"},
+      {type:"concept",q:"SRT 스케줄링의 평균 대기시간을 계산하시오.\n- A: 도착0/서비스8\n- B: 도착1/서비스4\n- C: 도착2/서비스9\n- D: 도착3/서비스5",a:"6.5ms"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 int main() {
     int arr[3][3] = {1,2,3,4,5,6,7,8,9};
@@ -323,7 +313,7 @@ WHERE p.name IN (
         GROUP BY project_id HAVING count(*) < 2
     )
 );`,lang:"sql",a:"1"},
-      {type:"concept",q:"페이지 참조 순서: 7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1 \n프레임 수 3개일 때 LRU 알고리즘의 페이지 부재 횟수를 작성하시오.",a:"12회"},
+      {type:"concept",q:"페이지 참조 순서: 7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1 \n- 프레임 수 3개일 때 LRU 알고리즘의 페이지 부재 횟수를 작성하시오.",a:"12회"},
       {type:"network",q:"다음 네트워크 취약점 설명을 읽고 알맞는 공격 기법 이름을 작성하시오.\n- IP/ICMP 특성 악용, 대량 ICMP Echo Reply 전송\n- 여러 호스트가 특정 대상에 패킷 집중 전송\n- 서비스거부(DoS) 유발",a:"스머프(Smurf) 공격"},
       {type:"concept",q:"아래 GoF 디자인 패턴의 괄호 안에 알맞는 용어를 작성하시오.\n- 클래스나 객체들이 상호작용하는 방법이나 책임 분배 방법을 정의\n- Chain of Responsibility, Command, Observer 패턴 포함",a:"행위(Behavioral) 패턴"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
@@ -334,8 +324,8 @@ int main() {
     printf("%d", sum);
     return 0;
 }`,lang:"c",a:"20"},
-      {type:"db",q:"아래 표에서 어떠한 무결성을 위반하였는지 작성하시오.\n(기본키에 NULL 또는 중복 값이 존재하는 경우)",a:"개체 무결성"},
-      {type:"network",q:"아래 URL 구조에서 각 구성요소 번호를 순서대로 작성하시오.\n구성요소: query, path, scheme, authority, fragment",a:"43125 (scheme=4, authority=3, path=1, query=2, fragment=5)"},
+      {type:"db",q:"아래 표에서 어떠한 무결성을 위반하였는지 작성하시오.\n- 기본키에 NULL 또는 중복 값이 존재하는 경우",a:"개체 무결성"},
+      {type:"network",q:"아래 URL 구조에서 각 구성요소 번호를 순서대로 작성하시오.\n- 1.path  2.query  3.authority  4.scheme  5.fragment",a:"43125"},
       {type:"code",q:"다음 Python 코드의 출력 값을 작성하시오.",code:`def func(value):
     if type(value) == type(100): return 100
     elif type(value) == type(""): return len(value)
@@ -372,7 +362,7 @@ int main() {
     return 0;
 }`,lang:"c",a:"312"},
       {type:"concept",q:"아래 테스트 커버리지 3가지를 설명에 맞게 작성하시오.\n1. 모든 문장을 최소 한 번씩 실행했는지 측정\n2. 모든 분기의 각 분기를 최소 한 번씩 실행했는지 측정\n3. 복합 조건 내 개별 조건이 참/거짓으로 평가되는 경우를 모두 테스트했는지 측정",a:"1. 문장 커버리지  2. 분기 커버리지  3. 조건 커버리지"},
-      {type:"concept",q:"아래 UML 클래스 관계도를 보고 각 관계명을 작성하시오.\n(1) 실선+화살표  (2) 삼각형 화살표(상속)  (3) 점선+화살표",a:"(1) 연관  (2) 일반화  (3) 의존"},
+      {type:"concept",q:"아래 UML 클래스 관계도를 보고 각 관계명을 작성하시오.\n(1) 실선+화살표\n(2) 삼각형 화살표(상속)\n(3) 점선+화살표",a:"(1) 연관  (2) 일반화  (3) 의존"},
       {type:"db",q:"아래 데이터베이스 키 종류를 설명에 맞게 작성하시오.\n(1) 다른 테이블의 기본 키를 참조하는 속성\n(2) 행을 유일하게 식별하는 최소 속성 집합\n(3) 후보 키 중 기본 키를 제외한 나머지\n(4) 행을 유일하게 식별하는 속성 집합",a:"(1) 외래키  (2) 후보키  (3) 대체키  (4) 슈퍼키"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 void func(int** arr, int size) {
@@ -494,7 +484,7 @@ class Child extends Parent {
     public void show() { total+=total*2; }
 }`,lang:"java",a:"54"},
       {type:"concept",q:"다음 설명에 해당하는 디자인 패턴을 작성하시오.\n- 서로 다른 인터페이스를 가진 클래스들을 연결해 사용 가능하게 함\n- 기존 클래스를 감싸서(wrapper) 인터페이스를 변환해주는 역할",a:"Adapter 패턴"},
-      {type:"concept",q:"문장 커버리지 테스트를 위한 제어 흐름도 빈칸과 순서를 작성하시오.\n[코드: int a=0; while(a<m||b[a]<x){ if(b[a]<0) b[a]=-b[a]; a++; } return 1;]",a:"① int a=0  ② a<m||b[a]<x  ③ b[a]<0  ④ b[a]=-b[a]  ⑤ a++  ⑥ return 1\n순서: 1→2→③→④→⑤→②→⑥"},
+      {type:"concept",q:"문장 커버리지 테스트를 위한 제어 흐름도 빈칸과 순서를 작성하시오.\n- 코드: int a=0; while(a<m||b[a]<x){ if(b[a]<0) b[a]=-b[a]; a++; } return 1;\n- ① int a=0  ② a<m||b[a]<x  ③ b[a]<0  ④ b[a]=-b[a]  ⑤ a++  ⑥ return 1",a:"1→2→③→④→⑤→②→⑥"},
       {type:"code",q:"다음 Java 재귀 코드의 출력 값을 작성하시오.",code:`public class Main {
     public static void main(String[] args) {
         int[] data={3,5,8,12,17};
@@ -574,9 +564,9 @@ int main(){
     ],
     "2회": [
       {type:"db",q:"데이터베이스 물리 설계 시 키 값과 포인터를 쌍으로 저장하여 빠르게 탐색하는 접근 방법을 작성하시오.",a:"인덱스(색인) 접근"},
-      {type:"db",q:"릴레이션에서 열(Column)을 의미하며 파일 구조의 필드(Field)에 해당하는 구성 요소를 보기에서 골라 작성하시오.\n[보기: ㄱ.Cardinality  ㄴ.Domain  ㄷ.Attribute  ㅁ.Degree  ㅂ.Schema  ㅅ.Tuple]",a:"ㄷ. Attribute"},
+      {type:"db",q:"릴레이션에서 열(Column)을 의미하며 파일 구조의 필드(Field)에 해당하는 구성 요소를 보기에서 골라 작성하시오.\n- [보기: ㄱ.Cardinality  ㄴ.Domain  ㄷ.Attribute  ㅁ.Degree  ㅂ.Schema  ㅅ.Tuple]",a:"ㄷ. Attribute"},
       {type:"network",q:"아래 내용을 보고 알맞는 보안 프로토콜을 작성하시오.\n- 암호화된 통신을 제공하는 원격 접속용 보안 프로토콜\n- 공개키 기반 인증, 기본 포트 22번\n- Telnet의 보안 취약점을 보완한 대안",a:"SSH"},
-      {type:"concept",q:"스케줄링 알고리즘 (1)과 (2)를 작성하시오.\n(1) CPU burst 시간이 짧은 프로세스를 우선 처리하는 비선점형 방식\n(2) (1)을 선점형으로 구현한 형태",a:"(1) SJF  (2) SRT"},
+      {type:"concept",q:"스케줄링 알고리즘 (1)과 (2)를 작성하시오.\n- (1) CPU burst 시간이 짧은 프로세스를 우선 처리하는 비선점형 방식\n- (2) (1)을 선점형으로 구현한 형태",a:"(1) SJF  (2) SRT"},
       {type:"code",q:"다음 Java 코드의 출력 값을 작성하시오.",code:`public class Main {
     public static void change(String[] data, String s){
         data[0]=s; s="Z";
@@ -627,7 +617,7 @@ int main(){
     printf("%d 그리고 %d",deq(&q),deq(&q));
     return 0;
 }`,lang:"c",a:"2 그리고 3"},
-      {type:"concept",q:"라운드로빈(RR) 스케줄링, 타임퀀텀 4ms일 때 평균 대기시간을 구하시오.\nP1: 도착0/실행8  P2: 도착1/실행4  P3: 도착2/실행9  P4: 도착3/실행5",a:"11.75ms"},
+      {type:"concept",q:"라운드로빈(RR) 스케줄링, 타임퀀텀 4ms일 때 평균 대기시간을 구하시오.\n- P1: 도착0/실행8\n- P2: 도착1/실행4\n- P3: 도착2/실행9\n- P4: 도착3/실행5",a:"11.75ms"},
       {type:"code",q:"다음 C언어 구조체 이중 포인터 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 struct dat{int x;int y;};
 int main(){
@@ -665,13 +655,13 @@ dst={i:i*2 for i in lst}
 s=set(dst.values())
 lst[0]=99; dst[2]=7; s.add(99)
 print(len(s & set(dst.values())))`,lang:"python",a:"2"},
-      {type:"db",q:"아래 employee 테이블에서 πTTL(employee) 관계대수 연산 결과를 작성하시오.\n(TTL 컬럼의 중복 제거된 고유 값 목록)",a:"TTL: 부장, 대리, 과장, 차장"},
+      {type:"db",q:"아래 employee 테이블에서 πTTL(employee) 관계대수 연산 결과를 작성하시오.\n- TTL: 부장, 대리, 과장, 차장",a:"TTL: 부장, 대리, 과장, 차장"},
     ],
     "3회": [
-      {type:"concept",q:"시스템을 폴더 모양 단위로 구분하여 구성 요소 간 관계를 표현하는 UML 구조 다이어그램의 명칭을 작성하시오.\n(«import», «access», «merge» 관계 표현 가능)",a:"패키지(Package) 다이어그램"},
+      {type:"concept",q:"시스템을 폴더 모양 단위로 구분하여 구성 요소 간 관계를 표현하는 UML 구조 다이어그램의 명칭을 작성하시오.\n- («import», «access», «merge» 관계 표현 가능)",a:"패키지(Package) 다이어그램"},
       {type:"concept",q:"소프트웨어 테스트에서 결정 포인트 내 모든 개별 조건식이 True/False 두 가지를 모두 만족하도록 테스트 케이스를 설계하는 커버리지를 보기에서 골라 작성하시오.",a:"ㅇ. 조건(Condition) 커버리지"},
-      {type:"concept",q:"유닉스/리눅스 기본 명령어 4가지를 설명에 맞게 작성하시오.\n1. 현재 작업 중인 디렉터리의 경로를 출력\n2. 디렉터리의 내용을 목록으로 표시\n3. 다른 디렉터리로 이동\n4. 파일을 복사",a:"1. pwd  2. ls  3. cd  4. cp"},
-      {type:"concept",q:"오류검출 방식 빈칸 ①~⑤를 보기에서 골라 작성하시오.\n①: 재전송 없이 수신 측에서 자체 수정 가능한 코드\n②: 자체 수정 방식\n③: 재전송 요구 방식\n④: 1비트 검사 비트 추가 오류 검출\n⑤: 특정 다항식 기반 오류 검출\n[보기: ㉠CRC  ㉡FEC  ㉢BEC  ㉤Parity  ㉧Hamming]",a:"① Hamming  ② FEC  ③ BEC  ④ Parity  ⑤ CRC"},
+      {type:"concept",q:"유닉스/리눅스 기본 명령어 4가지를 설명에 맞게 작성하시오.\n- 1. 현재 작업 중인 디렉터리의 경로를 출력\n- 2. 디렉터리의 내용을 목록으로 표시\n- 3. 다른 디렉터리로 이동\n- 4. 파일을 복사",a:"1. pwd  2. ls  3. cd  4. cp"},
+      {type:"concept",q:"오류검출 방식 빈칸 ①~⑤를 보기에서 골라 작성하시오.\n- ① 재전송 없이 수신 측에서 자체 수정 가능한 코드\n- ② 자체 수정 방식\n- ③ 재전송 요구 방식\n- ④ 1비트 검사 비트 추가 오류 검출\n- ⑤ 특정 다항식 기반 오류 검출\n- [보기: ㉠CRC  ㉡FEC  ㉢BEC  ㉤Parity  ㉧Hamming]",a:"① Hamming  ② FEC  ③ BEC  ④ Parity  ⑤ CRC"},
       {type:"code",q:"다음 C언어 코드의 출력 값을 작성하시오.",code:`#include <stdio.h>
 struct Test{int i;const char*g;};
 int main(){
@@ -731,7 +721,7 @@ WHERE col1 IN (2,3) OR col2 IN (3,5);`,lang:"sql",a:"4"},
     Rectangle(int width,int height){this.width=width;this.height=height;}
 }
 class Square extends Rectangle{
-    Square(int a){ ____(a,a); }  // ← 빈칸
+    Square(int a){ super(a,a); }
     int getSquareArea(){ return width*height; }
 }
 public class Main{
@@ -751,7 +741,7 @@ int main(){
     printf("%d",z);
     return 0;
 }`,lang:"c",a:"0"},
-      {type:"db",q:"관계형 데이터베이스 개념 용어를 보기에서 골라 작성하시오.\nㄱ. 테이블에서 한 행(Row)을 의미하는 요소\nㄴ. 실제 데이터가 저장되어 있는 테이블의 내용 전체\nㄷ. 테이블에 저장된 행(Row)의 총 개수\n[보기: 스키마  속성  튜플  차수  인스턴스  카디널리티]",a:"ㄱ. 튜플  ㄴ. 인스턴스  ㄷ. 카디널리티"},
+      {type:"db",q:"관계형 데이터베이스 개념 용어를 보기에서 골라 작성하시오.\n- ㄱ. 테이블에서 한 행(Row)을 의미하는 요소\n- ㄴ. 실제 데이터가 저장되어 있는 테이블의 내용 전체\n- ㄷ. 테이블에 저장된 행(Row)의 총 개수\n- [보기: 스키마  속성  튜플  차수  인스턴스  카디널리티]",a:"ㄱ. 튜플  ㄴ. 인스턴스  ㄷ. 카디널리티"},
       {type:"code",q:"다음 Java enum 코드의 출력 값을 작성하시오.",code:`enum Tri{
     A("A"),B("AB"),C("ABC");
     private String code;
@@ -764,8 +754,8 @@ public class Main{
         System.out.print(t.code());
     }
 }`,lang:"java",a:"AB"},
-      {type:"concept",q:"접근통제 모델 3가지를 설명에 맞게 작성하시오.\nㄱ. 중앙에서 보안 정책을 일괄 설정, 보안 등급으로 접근 결정\nㄴ. 조직 내 직무·역할에 따라 접근 권한 부여\nㄷ. 자원의 소유자가 접근 권한을 자유롭게 부여/회수",a:"ㄱ. MAC  ㄴ. RBAC  ㄷ. DAC"},
-      {type:"concept",q:"테스트케이스 구성요소 빈칸을 보기에서 골라 작성하시오.\n(테스트 대상 / 입력 값 / 기대 출력 결과 순서)\n[보기: ㄱ.테스트조건  ㄹ.테스트데이터  ㅁ.예상결과]",a:"(왼쪽순) ㄱ 테스트 조건  ㄹ 테스트 데이터  ㅁ 예상 결과"},
+      {type:"concept",q:"접근통제 모델 3가지를 설명에 맞게 작성하시오.\n- ㄱ. 중앙에서 보안 정책을 일괄 설정, 보안 등급으로 접근 결정\n- ㄴ. 조직 내 직무·역할에 따라 접근 권한 부여\n- ㄷ. 자원의 소유자가 접근 권한을 자유롭게 부여/회수",a:"ㄱ. MAC  ㄴ. RBAC  ㄷ. DAC"},
+      {type:"concept",q:"테스트케이스 구성요소 빈칸을 보기에서 골라 작성하시오.\n- (테스트 대상 / 입력 값 / 기대 출력 결과 순서)\n- [보기: ㄱ.테스트조건  ㄹ.테스트데이터  ㅁ.예상결과]",a:"ㄱ 테스트 조건, ㄹ 테스트 데이터, ㅁ 예상 결과"},
       {type:"sql",q:"아래 A 테이블에서 SQL 쿼리의 결과를 작성하시오.",code:`SELECT count(col2)
 FROM A
 WHERE col1 IN (2,3) OR col2 IN (3,5);`,lang:"sql",a:"4"},
