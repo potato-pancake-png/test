@@ -31,6 +31,36 @@ const parseQuestion = (qText: string) => {
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+const DescriptionBox = ({ description, highlightText }: { description: string, highlightText: (t: string) => React.ReactNode }) => {
+  const lines = description.split('\n').filter(l => l.trim());
+  const listPattern = /^[\-•*]\s+|^[①②③④⑤⑥⑦⑧⑨⑩]\s*|^\([1-9]\)\s*|^[1-9][\.\)]\s*|^[ㄱ-ㅎ]\.\s+/;
+
+  return (
+    <div className="q-desc-container">
+      <div className="q-desc-label">VIEW</div>
+      <div className="q-desc-content">
+        {lines.map((line, i) => {
+          const trimmed = line.trim();
+          const isListItem = listPattern.test(trimmed);
+          
+          if (isListItem) {
+            const markerMatch = trimmed.match(listPattern);
+            const marker = markerMatch ? markerMatch[0] : '';
+            const content = trimmed.replace(listPattern, '');
+            return (
+              <div key={i} className="q-desc-item">
+                <span className="q-desc-marker">{marker}</span>
+                <span className="q-desc-text">{highlightText(content)}</span>
+              </div>
+            );
+          }
+          return <div key={i} className="q-desc-line">{highlightText(line)}</div>;
+        })}
+      </div>
+    </div>
+  );
+};
+
 const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: number, year: string, round: string, kw: string }) => {
   const [showCode, setShowCode] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -45,10 +75,14 @@ const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: numbe
   };
 
   const highlightText = (text: string) => {
-    if (!kw) return text;
+    if (!kw) return <span>{text}</span>;
     const parts = text.split(new RegExp(`(${kw})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === kw.toLowerCase() ? <span key={i} className="highlight">{part}</span> : part
+    return (
+      <>
+        {parts.map((part, i) =>
+          part.toLowerCase() === kw.toLowerCase() ? <span key={i} className="highlight">{part}</span> : part
+        )}
+      </>
     );
   };
 
@@ -75,11 +109,7 @@ const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: numbe
 
       <div className="q-text">{highlightText(question)}</div>
 
-      {description && (
-        <div className="q-desc">
-          {description.split('\n').map((line, i) => <div key={i}>{highlightText(line)}</div>)}
-        </div>
-      )}
+      {description && <DescriptionBox description={description} highlightText={highlightText} />}
 
       {showCode && q.code && (
         <div className="code-area">

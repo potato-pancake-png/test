@@ -234,15 +234,56 @@ body {
   line-height: 1.6;
 }
 
-.q-desc {
+.q-desc-container {
+  background: var(--bg-hover);
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+  position: relative;
+  padding: 1.5rem;
+}
+
+.q-desc-label {
+  position: absolute;
+  top: -10px;
+  left: 1.5rem;
+  background: var(--bg-card);
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+}
+
+.q-desc-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.q-desc-line {
   font-size: 0.95rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  padding-left: 1.25rem;
-  border-left: 2px solid var(--border-light);
 }
-.q-desc ul { margin-left: 1.5rem; margin-top: 0.5rem; }
-.q-desc li { margin-bottom: 0.25rem; }
+
+.q-desc-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.q-desc-marker {
+  font-weight: 600;
+  color: var(--text-main);
+  min-width: 1.5rem;
+  flex-shrink: 0;
+}
+
+.q-desc-text {
+  flex: 1;
+}
 
 /* Actions */
 .q-actions {
