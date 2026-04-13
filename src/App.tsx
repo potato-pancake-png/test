@@ -28,6 +28,9 @@ const parseQuestion = (qText: string) => {
   return { question: qText, description: null };
 };
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: number, year: string, round: string, kw: string }) => {
   const [showCode, setShowCode] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -87,7 +90,19 @@ const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: numbe
             </button>
           </div>
           <div className="code-content">
-            <pre>{highlightText(q.code)}</pre>
+            <SyntaxHighlighter 
+              language={q.lang || 'text'} 
+              style={vscDarkPlus}
+              customStyle={{ 
+                margin: 0, 
+                padding: '1.25rem', 
+                fontSize: '0.9rem', 
+                backgroundColor: 'transparent',
+                fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace"
+              }}
+            >
+              {q.code}
+            </SyntaxHighlighter>
           </div>
         </div>
       )}
