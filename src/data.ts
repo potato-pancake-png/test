@@ -121,7 +121,7 @@ str = "S"
 for i in a:
     str = str + i[1]
 print(str)`,lang:"python",a:"Seynaau"},
-      {type:"sql",q:"아래 SQL 문장과 테이블(R1, R2)을 참고하여 출력 값을 작성하시오.",code:`SELECT B
+      {type:"sql",q:"아래 SQL 문장과 테이블(R1, R2)을 참고하여 출력 값을 작성하시오.\n[R1]\nB | C\na | 1\nb | 1\nc | 2\n[R2]\nC | D\n1 | k\n2 | m",code:`SELECT B
 FROM R1
 WHERE C IN (
     SELECT C FROM R2 WHERE D = 'k'
@@ -145,7 +145,7 @@ public class main {
     }
 }`,lang:"java",a:"9"},
       {type:"concept",q:"아래 내용에서 설명하는 공격 기법을 보기에서 골라 작성하시오.\n- 명확한 표적 대상으로 지속적인 정보수집 후 공격\n- Zero-day 취약점, 악성코드 등 다양한 기술 사용\n- 침투 → 검색 → 수집 → 유출의 4단계",a:"APT (Advanced Persistent Threat)"},
-      {type:"sql",q:"아래 SQL 코드와 테이블을 참고하여 결과 값을 작성하시오.",code:`SELECT COUNT(*)
+      {type:"sql",q:"아래 SQL 코드와 테이블을 참고하여 결과 값을 작성하시오.\n[TABLE]\nEMPNO | ENAME | SAL\n  100 | SMITH | 3000\n  200 | ALLEN | 2500\n  300 | KING  | 2000",code:`SELECT COUNT(*)
 FROM TABLE
 WHERE EMPNO > 100
   AND SAL >= 3000
@@ -303,7 +303,7 @@ int main() {
 lst = [1,2,3,4,5,6]
 func(lst)
 print(sum(lst[::2]) - sum(lst[1::2]))`,lang:"python",a:"3"},
-      {type:"sql",q:"아래 employee·project 테이블을 참고하여 SQL 쿼리의 출력 값을 작성하시오.",code:`SELECT count(*)
+      {type:"sql",q:"아래 employee·project 테이블을 참고하여 SQL 쿼리의 출력 값을 작성하시오.\n[employee]\nid | name | project_id\n 1 | Kim  |     1\n 2 | Lee  |     1\n 3 | Park |     2\n[project]\nproject_id | name\n     1     | Alpha\n     2     | Beta",code:`SELECT count(*)
 FROM employee AS e
 JOIN project AS p ON e.project_id = p.project_id
 WHERE p.name IN (
@@ -429,7 +429,7 @@ int main() {
     }
 }`,lang:"java",a:"출력1출력5"},
       {type:"network",q:"아래 내용에서 ARP와 RARP를 설명에 맞게 작성하시오.\n(1) 네트워크상에서 IP 주소를 MAC 주소로 변환하는 프로토콜\n(2) MAC 주소를 IP 주소로 변환하는 프로토콜",a:"(1) ARP  (2) RARP"},
-      {type:"sql",q:"아래 두 테이블(emp, sal)을 참고하여 SQL 쿼리의 결과를 작성하시오.",code:`SELECT name, incentive
+      {type:"sql",q:"아래 두 테이블(emp, sal)을 참고하여 SQL 쿼리의 결과를 작성하시오.\n[emp]\nid | name\n 1 | 이순신\n 2 | 강감찬\n[sal]\nid | incentives\n 1 |    1000\n 2 |     400",code:`SELECT name, incentives
 FROM emp, sal
 WHERE emp.id = sal.id
   AND incentives >= 500;`,lang:"sql",a:"이순신 | 1000"},
@@ -712,7 +712,7 @@ result={}
 for index,lis in enumerate(data):
     result[index]=(sum(lis),len(lis))
 print(result)`,lang:"python",a:"{0:(15,5), 1:(10,3), 2:(18,5), 3:(9,2)}"},
-      {type:"sql",q:"아래 테이블(A)에서 SQL 조건값을 실행한 결과 값을 작성하시오.",code:`SELECT count(col2)
+      {type:"sql",q:"아래 테이블(A)에서 SQL 조건값을 실행한 결과 값을 작성하시오.\n[A]\ncol1 | col2\n   1 |    3\n   2 |    1\n   3 |    5\n   4 |    5\n   5 |    2",code:`SELECT count(col2)
 FROM A
 WHERE col1 IN (2,3) OR col2 IN (3,5);`,lang:"sql",a:"4"},
       {type:"concept",q:"다음 설명에 해당하는 인증 기술을 작성하시오.\n- 한 번 사용하면 즉시 폐기되어 재사용 불가\n- 시간 동기화 또는 카운터 기반으로 매번 새로운 값 생성\n- 재전송 공격 방지, 은행 인증 등 고보안 영역에서 사용",a:"OTP (One-Time Password)"},
@@ -756,9 +756,6 @@ public class Main{
 }`,lang:"java",a:"AB"},
       {type:"concept",q:"접근통제 모델 3가지를 설명에 맞게 작성하시오.\n- ㄱ. 중앙에서 보안 정책을 일괄 설정, 보안 등급으로 접근 결정\n- ㄴ. 조직 내 직무·역할에 따라 접근 권한 부여\n- ㄷ. 자원의 소유자가 접근 권한을 자유롭게 부여/회수",a:"ㄱ. MAC  ㄴ. RBAC  ㄷ. DAC"},
       {type:"concept",q:"테스트케이스 구성요소 빈칸을 보기에서 골라 작성하시오.\n- (테스트 대상 / 입력 값 / 기대 출력 결과 순서)\n- [보기: ㄱ.테스트조건  ㄹ.테스트데이터  ㅁ.예상결과]",a:"ㄱ 테스트 조건, ㄹ 테스트 데이터, ㅁ 예상 결과"},
-      {type:"sql",q:"아래 A 테이블에서 SQL 쿼리의 결과를 작성하시오.",code:`SELECT count(col2)
-FROM A
-WHERE col1 IN (2,3) OR col2 IN (3,5);`,lang:"sql",a:"4"},
     ],
   },
 };

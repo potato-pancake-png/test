@@ -31,39 +31,99 @@ const parseQuestion = (qText: string) => {
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const DescriptionBox = ({ description, highlightText }: { description: string, highlightText: (t: string) => React.ReactNode }) => {
-  // 지능적으로 리스트 마커를 찾아 줄바꿈을 처리하는 함수
-  const smartSplit = (text: string) => {
-    // 1) 마커 패턴: - , •, ①~⑩, (1), 1., 1), ㄱ. 등
-    // 문장 중간에 있는 마커들 앞에 \n을 삽입하여 강제 분리
-    const markerPattern = /([^\n])\s+(?=[\-•*]\s|[①②③④⑤⑥⑦⑧⑨⑩]|(?:\d+[\.\)])|[ㄱ-ㅎ]\.)/g;
-    const normalized = text.replace(markerPattern, '$1\n');
-    return normalized.split('\n').filter(l => l.trim());
-  };
+type DescSeg =
+  | { kind: 'label'; text: string }
+  | { kind: 'table'; headers: string[]; rows: string[][] }
+  | { kind: 'list'; marker: string; content: string }
+  | { kind: 'line'; text: string };
 
-  const lines = smartSplit(description);
+const parseDescSegments = (description: string): DescSeg[] => {
+  const markerPattern = /([^\n])\s+(?=[\-•*]\s|[①②③④⑤⑥⑦⑧⑨⑩]|(?:\d+[\.\)]\s)|[ㄱ-ㅎ]\.\s)/g;
+  const normalized = description.replace(markerPattern, '$1\n');
+  const lines = normalized.split('\n').filter(l => l.trim());
+
   const listPattern = /^[\-•*]\s*|^[①②③④⑤⑥⑦⑧⑨⑩]\s*|^\([1-9]\)\s*|^\d+[\.\)]\s*|^[ㄱ-ㅎ]\.\s+/;
+  const sectionPattern = /^\[(.+)\]$/;
+  const isTableRow = (line: string) => line.includes('|');
+  const parseCells = (row: string) => row.split('|').map(c => c.trim()).filter(c => c !== '');
+
+  const segs: DescSeg[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i].trim();
+
+    const labelMatch = line.match(sectionPattern);
+    if (labelMatch) {
+      segs.push({ kind: 'label', text: labelMatch[1] });
+      i++;
+      continue;
+    }
+
+    if (isTableRow(line)) {
+      const tableLines: string[] = [];
+      while (i < lines.length && isTableRow(lines[i].trim())) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+      segs.push({
+        kind: 'table',
+        headers: parseCells(tableLines[0]),
+        rows: tableLines.slice(1).map(parseCells),
+      });
+      continue;
+    }
+
+    const isListItem = listPattern.test(line);
+    if (isListItem) {
+      const markerMatch = line.match(listPattern);
+      const marker = markerMatch ? markerMatch[0] : '';
+      segs.push({ kind: 'list', marker, content: line.replace(listPattern, '') });
+    } else {
+      segs.push({ kind: 'line', text: line });
+    }
+    i++;
+  }
+
+  return segs;
+};
+
+const DescriptionBox = ({ description, highlightText }: { description: string, highlightText: (t: string) => React.ReactNode }) => {
+  const segs = parseDescSegments(description);
 
   return (
     <div className="q-desc-container">
-      <div className="q-desc-label">VIEW</div>
+      <div className="q-desc-label">보기</div>
       <div className="q-desc-content">
-        {lines.map((line, i) => {
-          const trimmed = line.trim();
-          const isListItem = listPattern.test(trimmed);
-          
-          if (isListItem) {
-            const markerMatch = trimmed.match(listPattern);
-            const marker = markerMatch ? markerMatch[0] : '';
-            const content = trimmed.replace(listPattern, '');
+        {segs.map((seg, idx) => {
+          if (seg.kind === 'label')
+            return <div key={idx} className="q-desc-section-label">{seg.text}</div>;
+
+          if (seg.kind === 'table')
             return (
-              <div key={i} className="q-desc-item">
-                <span className="q-desc-marker">{marker}</span>
-                <span className="q-desc-text">{highlightText(content)}</span>
+              <div key={idx} className="q-desc-table-wrap">
+                <table className="q-desc-table">
+                  <thead>
+                    <tr>{seg.headers.map((h, j) => <th key={j}>{highlightText(h)}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {seg.rows.map((row, j) => (
+                      <tr key={j}>{row.map((cell, k) => <td key={k}>{highlightText(cell)}</td>)}</tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             );
-          }
-          return <div key={i} className="q-desc-line">{highlightText(line)}</div>;
+
+          if (seg.kind === 'list')
+            return (
+              <div key={idx} className="q-desc-item">
+                <span className="q-desc-marker">{seg.marker}</span>
+                <span className="q-desc-text">{highlightText(seg.content)}</span>
+              </div>
+            );
+
+          return <div key={idx} className="q-desc-line">{highlightText(seg.text)}</div>;
         })}
       </div>
     </div>
@@ -132,12 +192,11 @@ const QuestionCard = ({ q, index, year, round, kw }: { q: Question, index: numbe
             <SyntaxHighlighter 
               language={q.lang || 'text'} 
               style={vscDarkPlus}
-              customStyle={{ 
-                margin: 0, 
-                padding: '1.25rem', 
-                fontSize: '0.9rem', 
-                backgroundColor: 'transparent',
-                fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace"
+              customStyle={{
+                margin: 0,
+                padding: '1.25rem',
+                fontSize: '0.9rem',
+                backgroundColor: 'transparent'
               }}
             >
               {q.code}
